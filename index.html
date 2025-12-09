@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Preparación Becas del Gobierno e Ingreso CPA Politécnica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #123f88;
+      --primary-light: #2f6fd0;
+      --accent: #4a90e2;
+      --bg: #edf3ff;
+      --text: #1a1a1a;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #dce7ff, var(--bg) 50%, #ffffff);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ffffff, #e4edff);
+      border-radius: 22px;
+      padding: 28px 22px 26px;
+      box-shadow: 0 18px 40px rgba(15, 41, 92, 0.18);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(18,63,136,0.12), transparent 70%);
+      top: -80px;
+      right: -40px;
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      background: #d6e3ff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: var(--primary);
+      position: relative;
+      z-index: 1;
+    }
+
+    header p.lead {
+      font-size: 15px;
+      margin-bottom: 16px;
+      max-width: 520px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-highlight {
+      font-size: 14px;
+      background: #e8f1ff;
+      border-left: 4px solid var(--accent);
+      padding: 10px 12px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(18,63,136,0.4);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(18,63,136,0.45);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid #cfd6e5;
+      padding: 10px 18px;
+      font-size: 14px;
+      background: white;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .btn-ghost:hover {
+      background: #e0e8ff;
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .hero-right-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: 0 10px 28px rgba(16, 36, 72, 0.14);
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #dbe4ff;
+      color: #123f88;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    section {
+      margin-bottom: 36px;
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+
+    section p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: #5e6477;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 18px 16px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    ul li {
+      font-size: 14px;
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: var(--primary);
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .price-box {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .price-note {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+
+    .cta-final {
+      text-align: center;
+      background: white;
+      padding: 22px 18px;
+      border-radius: 20px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-final::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(74,144,226,0.18), transparent 70%);
+      top: -80px;
+      left: -40px;
+      pointer-events: none;
+    }
+
+    .cta-final-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-final p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .cta-small {
+      font-size: 12px;
+      color: #777;
+      margin-top: 6px;
+    }
+
+    .funnel-steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .step {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+    }
+
+    .step-number {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: #d6e3ff;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-floating {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background: #25d366;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 50;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .whatsapp-floating:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .whatsapp-floating span {
+      font-size: 26px;
+      color: #fff;
+    }
+
+    /* Animaciones / transiciones */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.96);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 40px 16px 90px;
+      }
+      header {
+        padding: 34px 32px 30px;
+      }
+      h1 {
+        font-size: 30px;
+      }
+      .hero-grid {
+        grid-template-columns: 2.1fr 1.2fr;
+        align-items: center;
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HERO -->
+    <header class="scale-in">
+      <span class="badge">
+        <span class="badge-dot"></span>
+        Curso 2025-2026 · Becas del Gobierno · Ingreso CPA Politécnica
+      </span>
+      <div class="hero-grid">
+        <div>
+          <h1>Preparación intensiva para Becas del Gobierno e Ingreso al CPA de la Facultad Politécnica</h1>
+          <p class="lead">
+            Dos caminos, un mismo objetivo: que llegues al examen con bases sólidas, seguridad y estrategia.
+          </p>
+          <div class="hero-highlight">
+            No es que no puedas, es que nunca te enseñaron como necesitabas. Acá empezamos por las bases para que lo difícil empiece a tener sentido.
+          </div>
+          <div class="hero-actions">
+            <a href="https://wa.me/595991936194?text=Hola,%20quiero%20informaci%C3%B3n%20general%20sobre%20los%20cursos%20de%20preparaci%C3%B3n" target="_blank">
+              <button class="btn-primary">Hablar por WhatsApp</button>
+            </a>
+            <a href="#cursos">
+              <button class="btn-ghost">Ver detalles de los cursos</button>
+            </a>
+          </div>
+          <p class="hero-note">
+            Cupos limitados · Atención cercana · Explicación clara desde las bases
+          </p>
+        </div>
+        <div class="hero-right-card">
+          <p class="tagline">Lo que vas a encontrar acá</p>
+          <ul>
+            <li>Explicaciones desde cero, sin asumir que “ya tendrías que saber”.</li>
+            <li>Práctica guiada con ejercicios tipo examen.</li>
+            <li>Acompañamiento real: dudas, correcciones y seguimiento.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Becas del Gobierno</span>
+            <span class="pill">Ingreso CPA Politécnica</span>
+            <span class="pill">Bases sólidas</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="cursos" class="fade-up">
+      <h2>Tus dos objetivos, un mismo lugar de preparación</h2>
+      <p class="section-subtitle">
+        Tanto si querés acceder a una beca del gobierno, como si apuntás al CPA de Politécnica, la clave es la misma: bases fuertes y práctica enfocada.
+      </p>
+      <div class="grid-2">
+        <!-- Curso Becas del Gobierno -->
+        <div class="card">
+          <h3>Curso Preparación Becas del Gobierno 2025</h3>
+          <p class="section-subtitle">Pensado para que llegues seguro al examen, sin miedo a Matemáticas ni Castellano.</p>
+          <ul>
+            <li><strong>Matemáticas:</strong> lunes, miércoles y viernes</li>
+            <li><strong>Castellano:</strong> martes y jueves</li>
+            <li><strong>Modalidad:</strong> 100% virtual</li>
+            <li><strong>Horario:</strong> 19:00 a 21:30 hs</li>
+          </ul>
+          <p class="price-box">180.000 Gs mensuales</p>
+          <p class="price-note">Incluye simulacros, materiales digitales y acompañamiento constante.</p>
+          <ul>
+            <li>Bases esenciales desde cero.</li>
+            <li>Álgebra, funciones, ecuaciones, comprensión lectora y gramática clave.</li>
+            <li>Ejercicios tipo examen y simulacros reales.</li>
+            <li>Clases grabadas, materiales en PDF y grupo privado para dudas.</li>
+          </ul>
+          <div class="hero-actions" style="margin-top:10px;">
+            <a href="https://wa.me/595991936194?text=Hola,%20quiero%20inscribirme%20en%20el%20curso%20de%20Preparaci%C3%B3n%20para%20Becas%20del%20Gobierno%202025" target="_blank">
+              <button class="btn-primary">Quiero este curso</button>
+            </a>
+          </div>
+        </div>
+
+        <!-- Curso CPA Politécnica -->
+        <div class="card">
+          <h3>Curso Intensivo Ingreso CPA – Facultad Politécnica</h3>
+          <p class="section-subtitle">Un único grupo, doble turno, para quienes están decididos a entrar.</p>
+          <ul>
+            <li><strong>Horario intensivo:</strong> 08:00 a 12:00 y 13:00 a 18:00 hs</li>
+            <li><strong>Modalidad:</strong> 100% presencial</li>
+            <li><strong>Grupo único:</strong> cupos realmente limitados.</li>
+          </ul>
+          <p class="price-box">330.000 Gs mensuales</p>
+          <p class="price-note">Matrícula <strong>exonerada</strong> por promoción.</p>
+          <ul>
+            <li>Repaso intensivo de contenidos clave para el CPA.</li>
+            <li>Práctica constante con ejercicios y modelos de examen.</li>
+            <li>Corrección detallada y explicación de cada error.</li>
+            <li>Acompañamiento cercano durante todo el proceso.</li>
+          </ul>
+          <div class="hero-actions" style="margin-top:10px;">
+            <a href="https://wa.me/595991936194?text=Hola,%20quiero%20inscribirme%20en%20el%20Curso%20Intensivo%20de%20Ingreso%20al%20CPA%20de%20la%20Politécnica" target="_blank">
+              <button class="btn-primary">Quiero este curso</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección estilo funnel: Cómo será tu experiencia -->
+    <section class="fade-up">
+      <h2>Cómo será tu experiencia de preparación</h2>
+      <p class="section-subtitle">
+        No se trata solo de “dar clases”, sino de guiarte en un proceso estructurado para que cada semana sientas que avanzás.
+      </p>
+      <div class="card">
+        <div class="funnel-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div><strong>Empezamos por conocerte académicamente.</strong> En las primeras clases hacemos actividades simples para entender tus bases y ajustar el ritmo para que avances con confianza.</div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div><strong>Ingresás a clases ordenadas por temas.</strong> Trabajamos los contenidos en bloques claros, siempre empezando por las bases y avanzando paso a paso.</div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div><strong>Practicás con ejercicios reales.</strong> Cada semana resolvés actividades, tareas cortas y simulacros que se corrigen y se explican para que entiendas el porqué de cada respuesta.</div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div><strong>Te preparás para rendir con otra cabeza.</strong> En vez de miedo, empezás a tener claridad, práctica y estrategia para enfrentar el examen.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="fade-up">
+      <div class="cta-final">
+        <div class="cta-final-inner">
+          <h2>El mejor momento para empezar a construir tus bases es hoy</h2>
+          <p>
+            No hace falta que te sientas “listo” para empezar. Justamente, el curso existe para llevarte desde donde estás ahora hasta donde necesitás estar para rendir bien.
+          </p>
+          <p>
+            Si tenés dudas, escribime por WhatsApp y vemos juntos cuál es la mejor opción para vos.
+          </p>
+          <div class="hero-actions" style="justify-content:center; margin-top:8px;">
+            <a href="https://wa.me/595991936194?text=Hola,%20quiero%20hablar%20sobre%20los%20cursos%20de%20preparaci%C3%B3n" target="_blank">
+              <button class="btn-primary">Hablar ahora por WhatsApp</button>
+            </a>
+          </div>
+          <p class="cta-small">
+            Recordá: los grupos son reducidos y los cupos son realmente limitados.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="whatsapp-floating" href="https://wa.me/595991936194?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos" target="_blank" aria-label="Contactar por WhatsApp">
+    <span>💬</span>
+  </a>
+
+  <script>
+    // Animaciones on scroll (Intersection Observer)
+    const fadeElements = document.querySelectorAll('.fade-up, .scale-in');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    fadeElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
